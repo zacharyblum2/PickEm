@@ -2,23 +2,25 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import BrowseStackNavigator from './navigation/BrowseStackNavigator';
+import { StatsStackNavigator } from './navigation/StatsStackNavigator';
 import HomeStackNavigator from './navigation/HomeStackNavigator';
-import SocialStackNavigator from './navigation/SocialStackNavigator';
+import { CommunityStackNavigator } from './navigation/CommunityStackNavigator';
 import ProfileStackNavigator from './navigation/ProfileStackNavigator';
-import { StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Tabs" component={BottomTabNavigator} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+        <NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen name="Tabs" component={BottomTabNavigator} options={{ headerShown: false }} />
+        </Stack.Navigator>
+        </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
@@ -30,31 +32,35 @@ const BottomTabNavigator = React.memo(() => {
       initialRouteName={"HomeTab"}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName = 'home-outline';
+            let iconName = 'home-outline';
 
-        //   switch (route.name) {
-        //     case 'Home':
-        //         iconName = focused ? 'home' : 'home-outline';
-        //     case 'Browse':
-        //         iconName = focused ? 'search' : 'search-outline';
-        //     case 'Social':
-        //         iconName = focused ? 'people' : 'people-outline';
-        //     case 'Profile':
-        //         iconName = focused ? 'person-circle' : 'person-circle-outline';
-        //   }
+            switch (route.name) {
+                case 'Home':
+                    iconName = focused ? 'home' : 'home-outline';
+                    break;
+                case 'Stats':
+                    iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+                    break;
+                case 'Community':
+                    iconName = focused ? 'people' : 'people-outline';
+                    break;
+                case 'Profile':
+                    iconName = focused ? 'person-circle' : 'person-circle-outline';
+                    break;
+            }
 
-          // You can return any component that you like here!
-          return <Ionicons name={'search'} size={size} color={color} />;
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: 'green',
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}
     >
-      <Tab.Screen name="HomeTab" component={HomeStackNavigator} />
-      <Tab.Screen name="BrowseTab" component={BrowseStackNavigator} />
-      <Tab.Screen name="SocialTab" component={SocialStackNavigator} />
-      <Tab.Screen name="ProfileTab" component={ProfileStackNavigator} />
+      <Tab.Screen name="Home" component={HomeStackNavigator} />
+      <Tab.Screen name="Community" component={CommunityStackNavigator} />
+      <Tab.Screen name="Stats" component={StatsStackNavigator} />
+      <Tab.Screen name="Profile" component={ProfileStackNavigator} />
     </Tab.Navigator>
   );
 });

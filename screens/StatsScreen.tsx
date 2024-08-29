@@ -2,12 +2,12 @@ import React from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export const ProfileScreen = React.memo(() => {
+export const StatsScreen = React.memo(() => {
     return (
         <SafeAreaView>
-            <Text>Profile Screen</Text>
+            <Text>Stats Screen</Text>
         </SafeAreaView>
     );
 })
 
-export default ProfileScreen;
+export default StatsScreen;

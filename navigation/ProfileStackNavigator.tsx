@@ -7,8 +7,8 @@ const ProfileStack = createNativeStackNavigator();
 export const ProfileStackNavigator = React.memo(() => {
 
     return (
-        <ProfileStack.Navigator>
-            <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+        <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
+            <ProfileStack.Screen name="ProfileScreen" component={ProfileScreen} />
         </ProfileStack.Navigator>
     )
 });

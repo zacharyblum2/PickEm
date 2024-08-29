@@ -1,13 +1,13 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export const ProfileScreen = React.memo(() => {
+export const EventScreen = React.memo(() => {
     return (
         <SafeAreaView>
-            <Text>Profile Screen</Text>
+            <Text>Title</Text>
         </SafeAreaView>
     );
 })
 
-export default ProfileScreen;
+export default EventScreen;
