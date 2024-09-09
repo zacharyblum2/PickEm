@@ -52,7 +52,7 @@ const BottomTabNavigator = React.memo(() => {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'green',
+        tabBarActiveTintColor: '#B497D6',
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       })}
